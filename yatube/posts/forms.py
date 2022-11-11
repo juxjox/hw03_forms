@@ -1,5 +1,4 @@
-from django.db import models
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm
 from .models import Post
 
 
