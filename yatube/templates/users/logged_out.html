@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Вы вышли из системы{% endblock %}
+{% block content %}
+<div class="container py-5"> 
+{% include 'users/includes/user_start.html'%}
+    Выход
+  </div>
+  <div class="card-body">
+    <p>
+      Вы вышли из своей учётной записи. Ждем вас снова!
+    </p>
+  {% include 'users/includes/user_end.html'%}
+</div>
+{% endblock %}

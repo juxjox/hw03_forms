@@ -1,0 +1,74 @@
+<!-- templates/about/tech.html -->
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+
+<div class="row">
+  <h1>Вот что я умею</h1>
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Python
+      </li>
+      <li class="list-group-item">
+        Django
+      </li>
+      <li class="list-group-item">
+        HTML
+      </li>
+      <li class="list-group-item">
+        Bootstrap
+      </li>
+    </ul>
+  </aside>
+  <article class="col-12 col-md-9">
+    <p>Мой первый проект на Django помог мне познакомиться с богатыми возможностями этого фреймворка. 
+        Основная идея сайта — это интерактивная блог-платформа, в которой пользователи могут
+        регистрироваться, создавать записи и вступать в сообщества.
+        <p> Для разработки я использую все доступные источники информации: часто обращаюсь к теории,
+          смотрю примеры в официальной документации, читаю тематические статьи 
+          и ищу свои ошибки в Stack Overflow. 
+        Некоторые методы и технологии, освоенные в проекте:</p>
+        <p></p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">django.contrib.auth</h5>
+                <small>Очень важно!</small>
+              </div>
+              <p class="mb-1">API для компонентов системы аутентификации Django</p>
+              <small class="text-muted">Подключить готовую систему аутентификации 
+                намного приятнее, чем писать все с нуля.
+              </small>
+           
+            <li class="list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">django.core.paginator</h5>
+                <small class="text-muted">Очень красиво!</small>
+              </div>
+              <p class="mb-1">Paginator — инструмент для нумерации страниц. </p>
+              <small class="text-muted">Легко настраивается и отлично смотрится
+                на нижней навигационной панели.
+              </small>
+            
+            <li class="list-group-item">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Контекст-процессоры</h5>
+                <small class="text-muted">Очень перспективно!</small>
+              </div>
+              <p class="mb-1">В проекте YaTube пока всего два контекст-процессора: один 
+                для проверки авторизации, другой для передачи текущего года.
+              </p>
+              <small class="text-muted">Еще больше возможностей (наверно?...)</small>
+          </div>
+    <p>
+      Что же будет дальше?
+    </p>
+    <p> 
+    <i>...To be continued</i>
+    </p>
+
+  </article>
+</div>
+
+{% endblock %} 

@@ -1,0 +1,76 @@
+<!-- templates/about/author.html -->
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% load static %}
+{% block content %}
+
+  <div class="text-center">
+    <img src="{% static "img/about/author.png" %}" class="rounded" alt="Портрет автора проекта">
+    <h1>Привет, я автор проекта!</h1>
+    <a href="https://github.com/juxjox" class="btn btn-info" role="button">Профиль GitHub</a>
+    <a href="" class="btn btn-success" role="button">Социальная сеть</a>
+    <a href="" class="btn btn-primary" role="button">Еще социальная сеть</a>
+
+  </div>
+  <p></p>
+  <label>
+    <p>
+      <strong><span style="color:red">Ya</span>tube</strong> — это место, где можно завести собственный виртуальный дневник, 
+      найти новых друзей или даже вступить в сообщество по своим интересам. Если вы хотите узнать больше о технологиях, 
+      на которых создавался проект, вам <a href="{% url 'about:tech' %}">сюда.</a>
+      Если же вы хотите узнать больше о его создателе, то вы попали туда, куда нужно!
+    </p>
+  </label>
+
+  
+  <h2>Программирование на Python: с чего начать?</h2>
+
+  <figure class="p-3 mb-2 bg-light text-dark">
+    <blockquote class="blockquote">
+      <p>Every adventure requires a first step. Trite but true, even here.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      Cheshire Cat in <cite title="Source Title">American McGee's Alice</cite>
+    </figcaption>
+  </figure>
+
+  <label>
+    <p>
+    Выбрать язык программирования для изучения тем сложнее, чем меньше общего опыта. 
+    Меня давно интересовал Python: именно этот язык использовался во многих интересных мне проектах, 
+    и его часто упоминали, как универсальный выбор для начинающего бэкендера. Как оказалось, 
+    Python — это не только для веб-разработчиков, но и для тех, кто хочет быстро создать 
+    свой собственный проект и запустить его на серверах. 
+    </p>
+  </label>
+
+
+
+  <h2>Что вокруг меня</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+  <div class="card" style="width: 30rem;">
+    <img src="{% static 'img/about/hello_kitty.jpg' %}" class="card-img-top" title = "Кто всегда придет на помощь в трудную минуту?" alt="Верная кошка Франциска, полуночный помощник">
+    <div class="card-body">
+      <h5 class="card-title">Франциска фон Карма</h5>
+      <p class="card-text">Самый главный ночной помощник. Она не лезет на коленки, пока я работаю, 
+        но любит сидеть рядом и громко мурлыкать. </p>
+    </div>
+  </div>
+  </div>
+  
+  <div class="col">
+  <div class="card" style="width: 30rem;">
+    <img src="{% static 'img/about/desk.jpg' %}" class="card-img-top" title = "Рабочий стол" alt="Рабочий стол">
+    <div class="card-body">
+      <h5 class="card-title">Мой рабочий стол</h5>
+      <p class="card-text">Контролируемый беспорядок. Кружки с котами в кадре не поместились.</p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+{% endblock %} 
+
+
