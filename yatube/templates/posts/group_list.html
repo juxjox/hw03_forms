@@ -12,7 +12,7 @@
   </p>
   <hr>
   {% for post in page_obj %} 
-  {% include 'posts/includes/post_lineup.html' %} 
+  {% include 'posts/includes/post_lineup.html' with pagetype='group' %} 
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %} 
   {% include 'posts/includes/paginator.html' %}

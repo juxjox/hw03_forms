@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .models import Post, Group
 from .forms import PostForm
-from .utils import get_pages
+from .utils import get_paginator
 
 
 User = get_user_model()
@@ -11,7 +11,7 @@ User = get_user_model()
 
 def index(request):
     post_list = Post.objects.all()
-    paginator = get_pages(post_list, request)
+    paginator = get_paginator(post_list, request)
     context = {"page_obj": paginator["page_obj"]}
     return render(request, "posts/index.html", context)
 
@@ -19,7 +19,7 @@ def index(request):
 def posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     post_list = group.posts.all()
-    paginator = get_pages(post_list, request)
+    paginator = get_paginator(post_list, request)
     context = {
         "group": group,
         "page_obj": paginator["page_obj"],
@@ -30,13 +30,10 @@ def posts(request, slug):
 def profile(request, username):
     profile = get_object_or_404(User, username=username)
     post_list = profile.posts.all()
-    counter = post_list.count()
-    paginator = get_pages(post_list, request)
+    paginator = get_paginator(post_list, request)
     context = {
         "profile": profile,
-        "post_list": post_list,
         "page_obj": paginator["page_obj"],
-        "counter": counter,
     }
     return render(request, "posts/profile.html", context)
 
@@ -51,8 +48,8 @@ def post_detail(request, post_id):
 
 @login_required
 def post_create(request):
-    form = PostForm(request.POST)
-    if request.method == "POST" and form.is_valid():
+    form = PostForm(request.POST or None)
+    if form.is_valid():
         post = form.save(commit=False)
         post.author = request.user
         post.save()
