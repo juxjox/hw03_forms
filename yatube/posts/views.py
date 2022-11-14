@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from .models import Post, Group
 from .forms import PostForm
-from .utils import get_paginator
+from .utils import get_page_obj
 
 
 User = get_user_model()
@@ -11,7 +11,7 @@ User = get_user_model()
 
 def index(request):
     post_list = Post.objects.all()
-    context = {"page_obj": get_paginator(post_list, request)}
+    context = {"page_obj": get_page_obj(post_list, request)}
     return render(request, "posts/index.html", context)
 
 
@@ -20,7 +20,7 @@ def posts(request, slug):
     post_list = group.posts.all()
     context = {
         "group": group,
-        "page_obj": get_paginator(post_list, request),
+        "page_obj": get_page_obj(post_list, request),
     }
     return render(request, "posts/group_list.html", context)
 
@@ -30,7 +30,7 @@ def profile(request, username):
     post_list = profile.posts.all()
     context = {
         "profile": profile,
-        "page_obj": get_paginator(post_list, request),
+        "page_obj": get_page_obj(post_list, request),
     }
     return render(request, "posts/profile.html", context)
 

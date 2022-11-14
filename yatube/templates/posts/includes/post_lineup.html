@@ -3,12 +3,12 @@
 {% endcomment %}
   <article>
     <ul>
-      {% if pagetype != 'profile' %} 
+      {% if not hide_profile_link %} 
       <li>
         Автор: {{post.author.get_full_name}}   
         <a href="{% url 'posts:profile' post.author.username %}"> все посты пользователя</a>
-      {% endif %}
       </li>
+      {% endif %}
       <li>
         Дата публикации: {{ post.pub_date|date:"d E Y" }}
       </li>
@@ -16,8 +16,6 @@
     <p>{{ post.text }}</p>
     <a href="{% url 'posts:post_detail' post.id %}">подробная информация </a>
   </article>
-  {% if pagetype != 'group' %}    
-    {% if post.group %}   
+    {% if post.group and not hide_group %}   
         <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
       {% endif %}
-  {% endif %}

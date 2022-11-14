@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{group.title}}</h1>
-  <hr>
-  <p>
-    {{group.description}}
-  </p>
-  <hr>
-  {% for post in page_obj %} 
-  {% include 'posts/includes/post_lineup.html' with pagetype='group' %} 
-  {% if not forloop.last %}<hr>{% endif %}
-  {% endfor %} 
+  <h1>{{group.title}}</h1>
+    <hr>
+    <p>
+      {{group.description}}
+    </p>
+    <hr>
+    {% for post in page_obj %} 
+      {% include 'posts/includes/post_lineup.html' with hide_group=True %} 
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %} 
   {% include 'posts/includes/paginator.html' %}
 {% endblock %} 
