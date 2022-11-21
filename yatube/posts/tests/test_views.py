@@ -74,10 +74,8 @@ class PostPagesTests(TestCase):
         post_group_0 = first_object.group.title
 
         self.assertEqual(post_author_0, 'auth')
-        self.assertEqual(
-            post_text_0, 'Тестовый пост для проверки работы сервиса.'
-        )
-        self.assertEqual(post_group_0, 'Тестовая группа 1')
+        self.assertEqual(post_text_0, PostPagesTests.post.text)
+        self.assertEqual(post_group_0, PostPagesTests.group.title)
         self.assertEqual(len(response.context['page_obj']), 1)
 
     def test_group_page_uses_correct_context(self):
@@ -92,9 +90,9 @@ class PostPagesTests(TestCase):
         group_title_0 = first_object.title
         group_slug_0 = first_object.slug
         group_description_0 = first_object.description
-        self.assertEqual(group_title_0, 'Тестовая группа 1')
-        self.assertEqual(group_slug_0, 'test_group_1')
-        self.assertEqual(group_description_0, 'Тестовое описание 1')
+        self.assertEqual(group_title_0, PostPagesTests.group.title)
+        self.assertEqual(group_slug_0, PostPagesTests.group.slug)
+        self.assertEqual(group_description_0, PostPagesTests.group.description)
         self.assertEqual(len(response.context["page_obj"]), 1)
 
     def test_profile_page_uses_correct_context(self):
@@ -102,15 +100,15 @@ class PostPagesTests(TestCase):
         response = self.authorized_client.get(
             reverse(
                 'posts:profile',
-                kwargs={'username': 'auth'},
+                kwargs={'username': self.user.username},
             )
         )
         first_object = response.context['page_obj'][0]
         post_text_0 = first_object.text
-        self.assertEqual(response.context['profile'].username, 'auth')
         self.assertEqual(
-            post_text_0, 'Тестовый пост для проверки работы сервиса.'
+            response.context['profile'].username, self.user.username
         )
+        self.assertEqual(post_text_0, PostPagesTests.post.text)
         self.assertEqual(len(response.context['page_obj']), 1)
 
     def test_post_page_uses_correct_context(self):
